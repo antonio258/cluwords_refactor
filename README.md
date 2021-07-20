@@ -7,7 +7,7 @@ Modificações nos scripts das cluwords
 
 ```pip install .```
 
-* em um ambiente python importe
+* em um ambiente python
 
 ```from cluwords_module import run```
 
