@@ -3,7 +3,6 @@ from .metrics import *
 from .cluwords import *
 import pickle
 
-
 class cluWords(object):
 
     def __init__(self, datapath, data_type, pp_column=None, open_pickle=None):
