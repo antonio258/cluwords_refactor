@@ -45,21 +45,21 @@ def tfidf(data):
                                  stop_words=None,
                                  tokenizer=lambda x: x.split(' '))
     X = vectorizer.fit_transform(data)
-    return X, vectorizer.get_feature_names_out()
+    return X, vectorizer.get_feature_names()
 
 def only_tf(data):
     tf_vectorizer = CountVectorizer(
         max_df=0.95, min_df=2, tokenizer=lambda x: x.split(' ')
     )
     tf = tf_vectorizer.fit_transform(data)
-    return tf, tf_vectorizer.get_feature_names_out()
+    return tf, tf_vectorizer.get_feature_names()
 
 
 def build_embedding(embedding_file, embedding_bin, data):
         model = KeyedVectors.load_word2vec_format(embedding_file, binary=embedding_bin)
         vec = CountVectorizer()
         vec.fit(data)
-        dataset_words = vec.get_feature_names_out()
+        dataset_words = vec.get_feature_names()
         model_words = model.index_to_key
         intersection_vocab = set(dataset_words).intersection(model_words)
         words_vector = {word: model[word] for word in intersection_vocab}
@@ -71,7 +71,7 @@ def build_embedding(embedding_file, embedding_bin, data):
         #         continue
         del model
         n_words = len(words_vector)
-        total_words = dataset_words.shape[0]
+        total_words = len(dataset_words)
         print('Number of cluwords {}'.format(n_words))
         # os.makedirs('../embeddings', exist_ok=True)
         # file = open("{}.txt".format(dataset_embedding), 'w')
