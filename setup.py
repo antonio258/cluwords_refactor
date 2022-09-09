@@ -11,7 +11,7 @@ if os.path.isfile(requirements):
 
 
 setup(
-   name='cluwords_module',
+   name='tm_module',
    version='1.0',
    description='Cluwords implementation',
    author='Antonio Pereira',
